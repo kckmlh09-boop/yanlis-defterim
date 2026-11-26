@@ -30,8 +30,8 @@ jobs:
 
       - name: Android SDK kur
         uses: android-actions/setup-android@v4
-        with:
-         packages: 'platform-tools'
+        with: 
+        packages: 'platform-tools'
 
       - name: Capacitor paketlerini kur
         run: npm install
