@@ -1,0 +1,10 @@
+{
+  "appId": "com.yanlisdefterim.app",
+  "appName": "Yanlış Defterim",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https",
+    "hostname": "localhost"
+  }
+}
