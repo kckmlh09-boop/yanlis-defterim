@@ -1,7 +1,18 @@
-import fs from 'node:fs';
-const p = 'android/app/src/main/AndroidManifest.xml';
-let xml = fs.readFileSync(p, 'utf8');
+const fs = require('fs');
+
+const path = 'android/app/src/main/AndroidManifest.xml';
+
+let xml = fs.readFileSync(path, 'utf8');
+
 if (!xml.includes('android.permission.CAMERA')) {
-  xml = xml.replace(/<manifest([^>]*)>/, (m, attrs) => `${m}\n    <uses-permission android:name="android.permission.CAMERA" />\n    <uses-feature android:name="android.hardware.camera.any" android:required="false" />`);
-  fs.writeFileSync(p, xml);
+  xml = xml.replace(
+    '<manifest',
+    '<manifest\n    xmlns:android="http://schemas.android.com/apk/res/android"'
+  );
+  xml = xml.replace(
+    '<application',
+    '<uses-permission android:name="android.permission.CAMERA" />\n    <application'
+  );
 }
+
+fs.writeFileSync(path, xml);
